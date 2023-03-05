@@ -6,6 +6,7 @@ function App() {
   const {entities} = useJaneHopkins();
 
   const addPatient = async() => {
+    
     const addPatientResponse = await entities.patient.add({
       name: "Test Person",
       dob: "January 17th, 1990",
@@ -18,6 +19,9 @@ function App() {
     <div className="App">
      <button onClick={() => addPatient()}>Add Patient</button>
     </div>
+
+
+
   );
 }
 
