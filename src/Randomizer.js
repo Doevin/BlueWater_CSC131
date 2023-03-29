@@ -6,8 +6,8 @@ const {entities} = useJaneHopkins()
 
 function labelRandomizer()
 {
-    let array1=structuredClone(entities.patient.list);
-    let array2=structuredClone(entities.drug);
+    let patientArray=structuredClone(entities.patient);
+    let randomDrugArray=structuredClone(randomizeDrugs(entities.drug));
     Array.prototype.push.apply(array1,array2);
     console.log(array1);
 
@@ -20,9 +20,15 @@ function labelRandomizer()
     }*/
 }
 
-function getRandomItem(arr) {
+function randomizeDrugs(arr) {
 
     let array=structuredClone(entities.drug.list);
-    array= array.sort(() => Math.random())-0.5);
-    
+    array= array.sort(() => Math.random()-0.5);
+    console.log(array);
 }
+
+return (
+    <div className="Randomizer">
+     <button onClick={() => labelRandomizer()}>Assign Drugs to patients</button>
+    </div>
+)

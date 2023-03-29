@@ -7,7 +7,8 @@ import useFDA from './hooks/useFDA';
 function LabelRandomizer()
 {
   const {entities} = useJaneHopkins()
-    let patientArray=structuredClone(entities.patient);
+  const randomize = async() => {
+    let patientArray=structuredClone(entities.patient.list);
     let randomDrugArray=structuredClone(RandomizeDrugs(entities.drug));
     Array.prototype.push.apply(patientArray,randomDrugArray);
     console.log(patientArray);
@@ -24,9 +25,10 @@ function RandomizeDrugs(arr) {
     array= array.sort(() => Math.random()-0.5);
     console.log(array);
 }
+  }
 return (
     <div className="Randomizer">
-     <button onClick={() => LabelRandomizer()}>Assign Drugs to patients</button>
+     <button onClick={() => randomize()}>Assign Drugs to patients</button>
     </div>
 )
 }
